@@ -1,0 +1,5 @@
+.idea
+seuvm.egg-info
+dist
+tests
+__pycache__
