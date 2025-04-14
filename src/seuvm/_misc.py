@@ -7,8 +7,14 @@ from importlib_resources import files
 def _read_coeffs(file):
     return xr.open_dataset(files('seuvm._coeffs').joinpath(file))
 
-def get_lin_seuvm():
-    return _read_coeffs('_lin_seuvm_coeffs.nc').copy()
+def get_seuvm_ver0():
+    return _read_coeffs('_seuvmv0_coeffs.nc').copy()
 
-def get_poly_seuvm():
-    return _read_coeffs('_poly_seuvm_coeffs.nc').copy()
+def get_seuvm_ver1l():
+    return _read_coeffs('_seuvmv1l_coeffs.nc').copy()
+
+def get_seuvm_ver1p():
+    return _read_coeffs('_seuvmv1p_coeffs.nc').copy()
+
+def get_seuvm_ver2l():
+    return _read_coeffs('_seuvmv2l_coeffs.nc').copy()

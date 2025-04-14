@@ -4,13 +4,13 @@ import xarray as xr
 import seuvm._misc as _m
 
 
-class SeuvmP:
+class Seuvmv1p:
     '''
     Poly Seuvm model class.
     '''
 
     def __init__(self):
-        self._dataset = _m.get_poly_seuvm()
+        self._dataset = _m.get_seuvm_ver1p()
         self.coeffs = np.array(np.vstack([self._dataset['a'],
                                           self._dataset['b'],
                                           self._dataset['c']])).T

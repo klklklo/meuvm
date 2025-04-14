@@ -1,16 +1,15 @@
 import numpy as np
-import pandas as pd
 import xarray as xr
 import seuvm._misc as _m
 
 
-class SeuvmL:
+class Seuvmv1l:
     '''
-    Seuvm model class.
+    Seuvm ver.1 linear model class.
     '''
 
     def __init__(self):
-        self._dataset = _m.get_lin_seuvm()
+        self._dataset = _m.get_seuvm_ver1l()
         self.coeffs = np.array(np.vstack([self._dataset['b0'],
                                           self._dataset['b1']])).T
 

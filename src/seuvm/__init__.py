@@ -1,2 +1,3 @@
-from seuvm._seuvm_lin import SeuvmL
-from seuvm._seuvm_poly import SeuvmP
+from seuvm._seuvmv0 import Seuvmv0
+from seuvm._seuvmv1l import Seuvmv1l
+from seuvm._seuvmv1p import Seuvmv1p
