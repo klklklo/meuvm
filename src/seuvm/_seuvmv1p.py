@@ -31,7 +31,18 @@ class Seuvmv1p:
                                      'uband': ('band_number', self._dataset['uband'].values)},
                           coords={'f107': x[:, 1],
                                   'band_center': self._dataset['center'].values,
-                                  'band_number': np.arange(190)})
+                                  'band_number': np.arange(190)},
+                          attrs={'Title': '',
+                                 'F10.7 units': '10^-22 W · m^-2 · Hz^-1',
+                                 'spectra units': 'm^-2 · s^-1 · nm^-1',
+                                 'units of wavelength': 'nm',
+                                 'wavelength range': '0-190',
+                                 'number of spectral intervals': '190',
+                                 'number of separate lines': '0',
+                                 'euv_flux_spectra': 'modeled EUV photon flux',
+                                 'lband': 'lower boundary of wavelength interval',
+                                 'uband': 'upper boundary of wavelength interval'
+                                 })
 
     def get_spectra(self, f107):
         return self.get_spectral_bands(f107)

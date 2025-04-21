@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "seuvm"
-version = "0.0.1b"
+version = "0.0.2b"
 authors = [
   { name="Anton Tatarnikov", email="tatarnikoffanton@yandex.ru" },
   { name="Oleg Zolotov", email="ovz.office@gmail.com" },
@@ -12,8 +12,8 @@ authors = [
 description = ""
 
 readme = "README.md"
-#license = "Apache License 2.0"
-#license-files = ["LICEN[CS]E.*"]
+license = "Apache-2.0"
+license-files = ["LICENSE.txt"]
 
 keywords = []
 
