@@ -1,7 +1,7 @@
 import numpy as np
 import pandas as pd
 import xarray as xr
-import seuvm._misc as _m
+import yaeuvm._misc as _m
 
 
 class Seuvmv1p:

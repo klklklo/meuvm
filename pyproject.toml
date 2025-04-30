@@ -3,7 +3,7 @@ requires = ["setuptools>=61.0"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "seuvm"
+name = "yaeuvm"
 version = "0.0.2b"
 authors = [
   { name="Anton Tatarnikov", email="tatarnikoffanton@yandex.ru" },
@@ -38,10 +38,10 @@ dependencies=[
 ]
 
 [project.urls]
-Homepage = "https://github.com/klklklo/seuvm"
+Homepage = "https://github.com/klklklo/yaeuvm"
 
 [tool.setuptools]
 include-package-data=true
 
 [tool.setuptools.package-data]
-"seuvm._coeffs" = [ "*.nc"]
+"yaeuvm._coeffs" = [ "*.nc"]

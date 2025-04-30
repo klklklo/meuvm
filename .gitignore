@@ -1,5 +1,5 @@
 .idea
-seuvm.egg-info
+yaeuvm.egg-info
 dist
 tests
 __pycache__

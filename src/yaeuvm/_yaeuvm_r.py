@@ -1,15 +1,15 @@
 import numpy as np
 import xarray as xr
-import seuvm._misc as _m
+import yaeuvm._misc as _m
 
 
-class Seuvmv1l:
+class Yaeuvm_r:
     '''
-    Seuvm ver.1 linear model class.
+    YAEUVM regression linear model class.
     '''
 
     def __init__(self):
-        self._dataset = _m.get_seuvm_ver1l()
+        self._dataset = _m.get_yaeuvm_r()
         self.coeffs = np.array(np.vstack([self._dataset['b0'],
                                           self._dataset['b1']])).T
 

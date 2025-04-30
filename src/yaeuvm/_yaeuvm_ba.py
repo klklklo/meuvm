@@ -1,14 +1,14 @@
 import numpy as np
 import xarray as xr
-import seuvm._misc as _m
+import yaeuvm._misc as _m
 
 
-class Seuvmv0:
+class Yaeuvm_ba:
     '''
-    Seuvm ver.0 ("average") model class.
+    YAEUVM binned average model class.
     '''
     def __init__(self):
-        self.dataset = _m.get_seuvm_ver0()
+        self.dataset = _m.get_yaeuvm_ba()
 
     def _get_spectrum(self, _f107):
         spectra = np.empty((190, 0))

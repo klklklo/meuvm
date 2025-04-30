@@ -1,15 +1,15 @@
 import numpy as np
 import xarray as xr
-import seuvm._misc as _m
+import yaeuvm._misc as _m
 
 
-class Seuvmv2:
+class Yaeuvm_br:
     '''
-    Seuvm ver.2 linear model class.
+    YAEUVM binned regression linear model class.
     '''
 
     def __init__(self):
-        self.dataset = _m.get_seuvm_ver2l()
+        self.dataset = _m.get_yaeuvm_br()
 
     def _get_spectrum(self, _f107):
         spectra = np.empty((190, 0))
