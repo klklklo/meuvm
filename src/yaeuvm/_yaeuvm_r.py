@@ -3,9 +3,9 @@ import xarray as xr
 import yaeuvm._misc as _m
 
 
-class Yaeuvm_r:
+class YaeuvmR:
     '''
-    YAEUVM regression linear model class.
+    YAEUVM Regression model class.
     '''
 
     def __init__(self):

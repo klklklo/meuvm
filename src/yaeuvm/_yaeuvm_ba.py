@@ -3,14 +3,14 @@ import xarray as xr
 import yaeuvm._misc as _m
 
 
-class Yaeuvm_ba:
+class YaeuvmBa:
     '''
-    YAEUVM binned average model class.
+    YAEUVM Binned Average model class.
     '''
     def __init__(self):
         self.dataset = _m.get_yaeuvm_ba()
 
-    def _get_spectrum(self, _f107):
+    def get_spectra(self, _f107):
         spectra = np.empty((190, 0))
         for f107 in _f107:
             if f107 > 60 and f107 <= 80:
@@ -41,12 +41,14 @@ class Yaeuvm_ba:
 
         return spectra
 
+    def get_spectral_bands(self, f107):
+        return self.get_spectra(f107)
 
     def predict(self, f107):
         f107 = np.array([f107], dtype=np.float64) if isinstance(f107, (int, float)) \
             else np.array(f107, dtype=np.float64)
 
-        res = self._get_spectrum(f107)
+        res = self.get_spectra(f107)
         return xr.Dataset(data_vars={'euv_flux_spectra': (('band_center', 'f107'), res),
                                      'lband': ('band_number', np.arange(0,190)),
                                      'uband': ('band_number', np.arange(1,191))},
