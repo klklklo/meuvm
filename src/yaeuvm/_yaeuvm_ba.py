@@ -10,7 +10,7 @@ class YaeuvmBa:
     def __init__(self):
         self.dataset = _m.get_yaeuvm_ba()
 
-    def get_spectra(self, _f107):
+    def _get_coeffs(self, _f107):
         spectra = np.empty((190, 0))
         for f107 in _f107:
             if f107 > 60 and f107 <= 80:
@@ -42,27 +42,25 @@ class YaeuvmBa:
         return spectra
 
     def get_spectral_bands(self, f107):
-        return self.get_spectra(f107)
-
-    def predict(self, f107):
         f107 = np.array([f107], dtype=np.float64) if isinstance(f107, (int, float)) \
             else np.array(f107, dtype=np.float64)
 
-        res = self.get_spectra(f107)
+        res = self._get_coeffs(f107)
         return xr.Dataset(data_vars={'euv_flux_spectra': (('band_center', 'f107'), res),
                                      'lband': ('band_number', np.arange(0,190)),
                                      'uband': ('band_number', np.arange(1,191))},
                           coords={'f107': f107,
                                   'band_center': [i+0.5 for i in range(190)],
-                                  'band_number': np.arange(190)},
-                          attrs={'Title': '',
-                                 'F10.7 units': '10^-22 W · m^-2 · Hz^-1',
-                                 'spectra units': 'm^-2 · s^-1 · nm^-1',
-                                 'units of wavelength': 'nm',
-                                 'wavelength range': '0-190',
-                                 'number of spectral intervals': '190',
-                                 'number of separate lines': '0',
-                                 'euv_flux_spectra': 'modeled EUV photon flux',
-                                 'lband': 'lower boundary of wavelength interval',
-                                 'uband': 'upper boundary of wavelength interval'
-                                 })
+                                  'band_number': np.arange(190)})
+
+    def get_spectra(self, f107):
+        f107 = np.array([f107], dtype=np.float64) if isinstance(f107, (int, float)) \
+            else np.array(f107, dtype=np.float64)
+
+        return self.get_spectral_bands(f107)
+
+    def predict(self, f107):
+        f107 = np.array([f107], dtype=np.float64) if isinstance(f107, (int, float)) \
+            else np.array(f107, dtype=np.float64)
+
+        return self.get_spectral_bands(f107)
