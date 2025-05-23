@@ -8,7 +8,7 @@ class YaeuvmBa:
     YAEUVM Binned Average model class.
     '''
     def __init__(self):
-        self.dataset = _m.get_yaeuvm_ba()
+        self._dataset = _m.get_yaeuvm_ba()
 
     def _get_coeffs(self, _f107):
         spectra = np.empty((190, 0))
@@ -36,7 +36,7 @@ class YaeuvmBa:
             elif f107 > 260 and f107 < 280:
                 i = 10
 
-            spectrum = np.array(self.dataset.to_pandas().iloc[i, 3:]).reshape((190,1))
+            spectrum = np.array(self._dataset.to_pandas().iloc[i, 3:]).reshape((190, 1))
             spectra = np.hstack([spectra, spectrum])
 
         return spectra

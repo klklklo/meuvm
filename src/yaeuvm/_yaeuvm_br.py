@@ -9,7 +9,7 @@ class YaeuvmBr:
     '''
 
     def __init__(self):
-        self.dataset = _m.get_yaeuvm_br()
+        self._dataset = _m.get_yaeuvm_br()
 
     def _get_coeffs(self, _f107):
         spectra = np.empty((190, 0))
@@ -38,7 +38,7 @@ class YaeuvmBr:
                 i = 10
 
             f107 = np.array([f107, 1.], dtype=np.float64).reshape(1, 2)
-            coeffs = np.array(self.dataset.to_pandas()[[f'k{i}', f'b{i}']])
+            coeffs = np.array(self._dataset.to_pandas()[[f'k{i}', f'b{i}']])
             spectrum = np.dot(coeffs, f107.T)
 
             spectra = np.hstack([spectra, spectrum])
@@ -55,6 +55,8 @@ class YaeuvmBr:
                           coords={'f107': f107,
                                   'band_center': [i + 0.5 for i in range(190)],
                                   'band_number': np.arange(190)})
+    def get_spectra(self, f107):
+        return self.get_spectral_bands(f107)
 
     def predict(self, f107):
-        return self._get_coeffs(f107)
+        return self.get_spectral_bands(f107)

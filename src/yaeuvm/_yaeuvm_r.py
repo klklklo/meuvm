@@ -10,10 +10,10 @@ class YaeuvmR:
 
     def __init__(self):
         self._dataset = _m.get_yaeuvm_r()
-        self.coeffs = np.array(np.vstack([self._dataset['b0'],
-                                          self._dataset['b1']])).T
+        self._coeffs = np.array(np.vstack([self._dataset['b0'],
+                                           self._dataset['b1']])).T
 
-    def get_f(self, f107):
+    def _get_f(self, f107):
         try:
             if isinstance(f107, float) or isinstance(f107, int):
                 return np.array([f107, 1.0], dtype=np.float64).reshape(1, 2)
@@ -22,8 +22,8 @@ class YaeuvmR:
             raise TypeError('Only int, float or array-like object types are allowed.')
 
     def get_spectral_bands(self, f107):
-        x = self.get_f(f107)
-        res = np.dot(self.coeffs, x.T)
+        x = self._get_f(f107)
+        res = np.dot(self._coeffs, x.T)
         return xr.Dataset(data_vars={'euv_flux_spectra': (('band_center', 'f107'), res),
                                      'lband': ('band_number', self._dataset['lband'].values),
                                      'uband': ('band_number', self._dataset['uband'].values)},
