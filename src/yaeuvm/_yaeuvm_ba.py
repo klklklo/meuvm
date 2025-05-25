@@ -9,34 +9,35 @@ class YaeuvmBa:
     '''
     def __init__(self):
         self._dataset = _m.get_yaeuvm_ba()
+        self._coeffs = np.array(self._dataset[[f'{i+0.5}irr' for i in range(190)]].to_dataarray())
 
     def _get_coeffs(self, _f107):
         spectra = np.empty((190, 0))
         for f107 in _f107:
-            if f107 > 60 and f107 <= 80:
+            if f107 <= 80:
                 i = 0
-            elif f107 > 80 and f107 <= 100:
+            elif 80 < f107 <= 100:
                 i = 1
-            elif f107 > 100 and f107 <= 120:
+            elif 100 < f107 <= 120:
                 i = 2
-            elif f107 > 120 and f107 < 140:
+            elif 120 < f107 < 140:
                 i = 3
-            elif f107 > 140 and f107 < 160:
+            elif 140 < f107 < 160:
                 i = 4
-            elif f107 > 160 and f107 < 180:
+            elif 160 < f107 < 180:
                 i = 5
-            elif f107 > 180 and f107 < 200:
+            elif 180 < f107 < 200:
                 i = 6
-            elif f107 > 200 and f107 < 220:
+            elif 200 < f107 < 220:
                 i = 7
-            elif f107 > 220 and f107 < 240:
+            elif 220 < f107 < 240:
                 i = 8
-            elif f107 > 240 and f107 < 260:
+            elif 240 < f107 < 260:
                 i = 9
-            elif f107 > 260 and f107 < 280:
+            elif f107 > 260:
                 i = 10
 
-            spectrum = np.array(self._dataset.to_pandas().iloc[i, 3:]).reshape((190, 1))
+            spectrum = self._coeffs[:, i].reshape((190, 1))
             spectra = np.hstack([spectra, spectrum])
 
         return spectra
