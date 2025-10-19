@@ -9,7 +9,7 @@ class MeuvmR:
     '''
 
     def __init__(self):
-        self._dataset = _m.get_meuvm_r()
+        self._dataset = _m._get_meuvm_r()
         self._coeffs = np.array(np.vstack([self._dataset['b0'],
                                            self._dataset['b1']])).T
 

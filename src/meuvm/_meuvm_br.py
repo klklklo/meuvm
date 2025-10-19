@@ -9,10 +9,9 @@ class MeuvmBr:
     '''
 
     def __init__(self):
-        self._dataset = _m.get_meuvm_br()
+        self._dataset = _m._get_meuvm_br()
         self._coeffs = np.array(self._dataset[['k0', 'b0', 'k1', 'b1', 'k2', 'b2', 'k3', 'b3', 'k4', 'b4',
-                                               'k5', 'b5', 'k6', 'b6', 'k7', 'b7', 'k8', 'b8', 'k9', 'b9',
-                                               'k10', 'b10']].to_dataarray()).T
+                                               'k5', 'b5', 'k6', 'b6', 'k7', 'b7']].to_dataarray()).T
 
     def _calc_spectra(self, _f107):
         spectra = np.empty((190, 0))
@@ -31,14 +30,9 @@ class MeuvmBr:
                 i = 5
             elif 180 < f107 <= 200:
                 i = 6
-            elif 200 < f107 <= 220:
+            elif f107 > 200:
                 i = 7
-            elif 220 < f107 <= 240:
-                i = 8
-            elif 240 < f107 <= 260:
-                i = 9
-            elif f107 > 260:
-                i = 10
+
 
             f107 = np.array([f107, 1.], dtype=np.float64).reshape(1, 2)
             coeffs = np.array(self._coeffs[:, i*2:i*2+2])

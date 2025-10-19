@@ -8,8 +8,8 @@ class MeuvmBa:
     MEUVM Binned Average model class.
     '''
     def __init__(self):
-        self._dataset = _m.get_meuvm_ba()
-        self._coeffs = np.array(self._dataset[[f'{i}_{i+20}' for i in range(60,280,20)]].to_dataarray()).T
+        self._dataset = _m._get_meuvm_ba()
+        self._coeffs = np.array(self._dataset[[f'{i}_{i+20}' for i in range(60,220,20)]].to_dataarray()).T
 
     def _get_coeffs(self, _f107):
         spectra = np.empty((190, 0))
@@ -28,14 +28,8 @@ class MeuvmBa:
                 i = 5
             elif 180 < f107 <= 200:
                 i = 6
-            elif 200 < f107 <= 220:
+            elif f107 > 200:
                 i = 7
-            elif 220 < f107 <= 240:
-                i = 8
-            elif 240 < f107 <= 260:
-                i = 9
-            elif f107 > 260:
-                i = 10
 
             spectrum = self._coeffs[:, i].reshape((190, 1))
             spectra = np.hstack([spectra, spectrum])
