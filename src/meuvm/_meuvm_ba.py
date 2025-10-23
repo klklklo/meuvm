@@ -58,11 +58,13 @@ class MeuvmBa:
                                   'band_center': [i+0.5 for i in range(190)],
                                   'band_number': np.arange(190)},
                           attrs={'F10.7 units': '10^-22 · W · m^-2 · Hz^-1',
-                                 'spectra units': 'W · m^-2 · nm^-1',
+                                 'energy flux units': 'W · m^-2 · nm^-1',
                                  'wavelength units': 'nm',
-                                 'euv_flux_spectra': 'modeled EUV solar irradiance',
+                                 'euv_flux_spectra': 'modeled EUV solar spectral irradiance',
                                  'lband': 'lower boundary of wavelength interval',
-                                 'uband': 'upper boundary of wavelength interval'})
+                                 'uband': 'upper boundary of wavelength interval',
+                                 'band_center': 'center of wavelength interval',
+                                 'band_number': 'number of wavelength interval'})
 
     def get_spectra(self, f107):
         return self.get_spectral_bands(f107)
